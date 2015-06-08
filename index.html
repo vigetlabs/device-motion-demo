@@ -59,6 +59,10 @@
     </ul>
 
     <script>
+      var trim = function(number) {
+        return number.toFixed(3)
+      }
+
       var accelerationX = document.getElementById('dm-acceleration-x')
       var accelerationY = document.getElementById('dm-acceleration-y')
       var accelerationZ = document.getElementById('dm-acceleration-z')
@@ -77,24 +81,24 @@
       var orientationCompass = document.getElementById('do-compass-heading')
 
       window.addEventListener('devicemotion', function(e) {
-        accelerationX.textContent = e.acceleration.x
-        accelerationY.textContent = e.acceleration.y
-        accelerationZ.textContent = e.acceleration.z
+        accelerationX.textContent = trim(e.acceleration.x)
+        accelerationY.textContent = trim(e.acceleration.y)
+        accelerationZ.textContent = trim(e.acceleration.z)
 
-        accelerationGravityX.textContent = e.accelerationIncludingGravity.x
-        accelerationGravityY.textContent = e.accelerationIncludingGravity.y
-        accelerationGravityZ.textContent = e.accelerationIncludingGravity.z
+        accelerationGravityX.textContent = trim(e.accelerationIncludingGravity.x)
+        accelerationGravityY.textContent = trim(e.accelerationIncludingGravity.y)
+        accelerationGravityZ.textContent = trim(e.accelerationIncludingGravity.z)
 
-        rotationRateAlpha.textContent = e.rotationRate.alpha
-        rotationRateBeta.textContent = e.rotationRate.beta
-        rotationRateGamma.textContent = e.rotationRate.gamma
+        rotationRateAlpha.textContent = trim(e.rotationRate.alpha)
+        rotationRateBeta.textContent = trim(e.rotationRate.beta)
+        rotationRateGamma.textContent = trim(e.rotationRate.gamma)
       })
 
       window.addEventListener('deviceorientation', function(e) {
-        orientationAlpha.textContent = e.alpha
-        orientationBeta.textContent = e.beta
-        orientationGamma.textContent = e.gamma
-        orientationCompass.textContent = e.webkitCompassHeading
+        orientationAlpha.textContent = trim(e.alpha)
+        orientationBeta.textContent = trim(e.beta)
+        orientationGamma.textContent = trim(e.gamma)
+        orientationCompass.textContent = trim(e.webkitCompassHeading)
       })
     </script>
   </body>
