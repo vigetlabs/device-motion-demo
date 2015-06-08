@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background: black;
+        color: #777;
+        padding: 2% 5%;
+        font-family: sans-serif;
+      }
+
+      h2, h3 {
+        color: #a8276b;
+        letter-spacing: 2px;
+      }
+
+      h3 {
+        font-weight: normal;
+      }
+
+      span {
+        color: #fff;
+        display: inline-block;
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>DeviceMotion</h2>
+    <h3>.acceleration</h3>
+    <ul>
+      <li>x: <span id="dm-acceleration-x"></span></li>
+      <li>y: <span id="dm-acceleration-y"></span></li>
+      <li>z: <span id="dm-acceleration-z"></span></li>
+    </ul>
+    <h3>.accelerationIncludingGravity</h3>
+    <ul>
+      <li>x: <span id="dm-acceleration-gravity-x"></span></li>
+      <li>y: <span id="dm-acceleration-gravity-y"></span></li>
+      <li>z: <span id="dm-acceleration-gravity-z"></span></li>
+    </ul>
+
+    <h3>.rotationRate</h3>
+    <ul>
+      <li>x: <span id="dm-rotation-rate-alpha"></span></li>
+      <li>y: <span id="dm-rotation-rate-beta"></span></li>
+      <li>z: <span id="dm-rotation-rate-gamma"></span></li>
+    </ul>
+
+    <h2>DeviceOrientation</h2>
+    <ul>
+      <li>alpha: <span id="do-alpha"></span></li>
+      <li>beta: <span id="do-beta"></span></li>
+      <li>gamma: <span id="do-gamma"></span></li>
+      <li>webkitCompassHeading: <span id="do-compass-heading"></span></li>
+    </ul>
+
+    <script>
+      var accelerationX = document.getElementById('dm-acceleration-x')
+      var accelerationY = document.getElementById('dm-acceleration-y')
+      var accelerationZ = document.getElementById('dm-acceleration-z')
+
+      var accelerationGravityX = document.getElementById('dm-acceleration-gravity-x')
+      var accelerationGravityY = document.getElementById('dm-acceleration-gravity-y')
+      var accelerationGravityZ = document.getElementById('dm-acceleration-gravity-z')
+
+      var rotationRateAlpha = document.getElementById('dm-rotation-rate-alpha')
+      var rotationRateBeta = document.getElementById('dm-rotation-rate-beta')
+      var rotationRateGamma = document.getElementById('dm-rotation-rate-gamma')
+
+      var orientationAlpha = document.getElementById('do-alpha')
+      var orientationBeta = document.getElementById('do-beta')
+      var orientationGamma = document.getElementById('do-gamma')
+      var orientationCompass = document.getElementById('do-compass-heading')
+
+      window.addEventListener('devicemotion', function(e) {
+        accelerationX.textContent = e.acceleration.x
+        accelerationY.textContent = e.acceleration.y
+        accelerationZ.textContent = e.acceleration.z
+
+        accelerationGravityX.textContent = e.accelerationIncludingGravity.x
+        accelerationGravityY.textContent = e.accelerationIncludingGravity.y
+        accelerationGravityZ.textContent = e.accelerationIncludingGravity.z
+
+        rotationRateAlpha.textContent = e.rotationRate.alpha
+        rotationRateBeta.textContent = e.rotationRate.beta
+        rotationRateGamma.textContent = e.rotationRate.gamma
+      })
+
+      window.addEventListener('deviceorientation', function(e) {
+        orientationAlpha.textContent = e.alpha
+        orientationBeta.textContent = e.beta
+        orientationGamma.textContent = e.gamma
+        orientationCompass.textContent = e.webkitCompassHeading
+      })
+    </script>
+  </body>
+</html>
