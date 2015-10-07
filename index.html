@@ -60,7 +60,7 @@
 
     <script>
       var trim = function(number) {
-        return number.toFixed(3)
+        return number ? number.toFixed(1) : '-'
       }
 
       var accelerationX = document.getElementById('dm-acceleration-x')
